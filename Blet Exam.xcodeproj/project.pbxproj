@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		C48DA1D7201AEB87009BE296 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48DA1D6201AEB87009BE296 /* AppDelegate.swift */; };
-		C48DA1D9201AEB87009BE296 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48DA1D8201AEB87009BE296 /* ViewController.swift */; };
+		C48DA1D9201AEB87009BE296 /* ShowTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48DA1D8201AEB87009BE296 /* ShowTableViewController.swift */; };
 		C48DA1DC201AEB87009BE296 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C48DA1DA201AEB87009BE296 /* Main.storyboard */; };
 		C48DA1DF201AEB87009BE296 /* Blet_Exam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C48DA1DD201AEB87009BE296 /* Blet_Exam.xcdatamodeld */; };
 		C48DA1E1201AEB87009BE296 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C48DA1E0201AEB87009BE296 /* Assets.xcassets */; };
 		C48DA1E4201AEB87009BE296 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C48DA1E2201AEB87009BE296 /* LaunchScreen.storyboard */; };
 		C48DA1EF201AEB87009BE296 /* Blet_ExamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48DA1EE201AEB87009BE296 /* Blet_ExamTests.swift */; };
 		C48DA1FA201AEB87009BE296 /* Blet_ExamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48DA1F9201AEB87009BE296 /* Blet_ExamUITests.swift */; };
+		C48DA208201B9963009BE296 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48DA207201B9963009BE296 /* AddItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,7 @@
 /* Begin PBXFileReference section */
 		C48DA1D3201AEB86009BE296 /* Blet Exam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blet Exam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C48DA1D6201AEB87009BE296 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C48DA1D8201AEB87009BE296 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C48DA1D8201AEB87009BE296 /* ShowTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTableViewController.swift; sourceTree = "<group>"; };
 		C48DA1DB201AEB87009BE296 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C48DA1DE201AEB87009BE296 /* Blet_Exam.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Blet_Exam.xcdatamodel; sourceTree = "<group>"; };
 		C48DA1E0201AEB87009BE296 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +50,7 @@
 		C48DA1F5201AEB87009BE296 /* Blet ExamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Blet ExamUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C48DA1F9201AEB87009BE296 /* Blet_ExamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blet_ExamUITests.swift; sourceTree = "<group>"; };
 		C48DA1FB201AEB87009BE296 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C48DA207201B9963009BE296 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +102,9 @@
 			isa = PBXGroup;
 			children = (
 				C48DA1D6201AEB87009BE296 /* AppDelegate.swift */,
-				C48DA1D8201AEB87009BE296 /* ViewController.swift */,
+				C48DA1D8201AEB87009BE296 /* ShowTableViewController.swift */,
 				C48DA1DA201AEB87009BE296 /* Main.storyboard */,
+				C48DA207201B9963009BE296 /* AddItemViewController.swift */,
 				C48DA1E0201AEB87009BE296 /* Assets.xcassets */,
 				C48DA1E2201AEB87009BE296 /* LaunchScreen.storyboard */,
 				C48DA1E5201AEB87009BE296 /* Info.plist */,
@@ -262,7 +265,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C48DA1D9201AEB87009BE296 /* ViewController.swift in Sources */,
+				C48DA1D9201AEB87009BE296 /* ShowTableViewController.swift in Sources */,
+				C48DA208201B9963009BE296 /* AddItemViewController.swift in Sources */,
 				C48DA1DF201AEB87009BE296 /* Blet_Exam.xcdatamodeld in Sources */,
 				C48DA1D7201AEB87009BE296 /* AppDelegate.swift in Sources */,
 			);
