@@ -14,9 +14,7 @@ class ShowTableViewController: UITableViewController, AddViewDelegate, cellDeleg
     
     
     
-    func editRow(_ sender: ICell) {
-        print("here")
-    }
+
     
     
     let manageDatabase = (UIApplication.shared.delegate as!
@@ -70,11 +68,6 @@ class ShowTableViewController: UITableViewController, AddViewDelegate, cellDeleg
     }
     
     
-    
-    
-    
-    
-    
     //***************** add, edit data  *********************************
     
     func addItem(_ controller: AddItemViewController, with toDoTitle: String, _ content: String, and beginTime: Date, by sender: UIButton, at indexPath: NSIndexPath?) {
@@ -83,12 +76,22 @@ class ShowTableViewController: UITableViewController, AddViewDelegate, cellDeleg
             dismiss(animated: true, completion: nil)
         }
         else{
-            let item = NSEntityDescription.insertNewObject(forEntityName: "Todolist", into: manageDatabase) as! Todolist
-            item.title = toDoTitle
-            item.content = content
-            item.beginDate = beginTime
-            item.finish = false
-            incom.append(item)
+            if let ip = indexPath{
+                let item = incom[ip.row]
+                item.title = toDoTitle
+                item.content = content
+                item.beginDate = beginTime
+                item.finish = false
+            }
+            else{
+                let item = NSEntityDescription.insertNewObject(forEntityName: "Todolist", into: manageDatabase) as! Todolist
+                item.title = toDoTitle
+                item.content = content
+                item.beginDate = beginTime
+                item.finish = false
+                incom.append(item)
+            }
+            
             do{
                 try manageDatabase.save()
             }
@@ -107,13 +110,18 @@ class ShowTableViewController: UITableViewController, AddViewDelegate, cellDeleg
             let target = segue.destination as! AddItemViewController
             target.delegate = self
         }
+        else if segue.identifier == "edit"{
+            let target = segue.destination as! AddItemViewController
+            target.delegate = self
+            if let indexPath = (sender as? NSIndexPath){
+                target.item = incom[indexPath.row]
+                target.indexPath = indexPath
+            }
+        }
        
     }
     
-    //*********************************************************************
-    
-    
-    
+    //********************  TableView Stuff   ********************************
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,6 +134,7 @@ class ShowTableViewController: UITableViewController, AddViewDelegate, cellDeleg
         // Dispose of any resources that can be recreated.
     }
 
+    //*********************  Database stuff   **********************************
     func fetchAllItems(){
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Todolist")
         request.predicate = NSPredicate(format: "finish == %@", NSNumber(value: true))
@@ -145,6 +154,43 @@ class ShowTableViewController: UITableViewController, AddViewDelegate, cellDeleg
             print("\(error)")
         }
     }
+    //********************** Row selected stuff  ***********************************
+    func editRow(_ sender: ICell) {
+        print("here")
+        let indexPath = tableView.indexPath(for: sender)! as NSIndexPath
+        performSegue(withIdentifier: "edit", sender: indexPath)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var item:Todolist?
+        if indexPath.section == 0{
+            item = incom[indexPath.row]
+        }
+        else{
+            item = com[indexPath.row]
+        }
+        if item?.finish == false{
+            item?.finish = true
+        }
+        else{
+            item?.finish = false
+        }
+        do{
+            try manageDatabase.save()
+        }
+        catch{
+            print("\(error)")
+        }
+        fetchAllItems()
+        tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        <#code#>
+    }
+    
+    
+    
     
     
     

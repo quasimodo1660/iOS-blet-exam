@@ -14,12 +14,15 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var contentLabel: UITextView!
     @IBOutlet weak var timePick: UIDatePicker!
     
+    
     weak var delegate:AddViewDelegate?
     var indexPath:NSIndexPath?
-    
+    var item:Todolist?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleLabel.text = item?.title
+        contentLabel.text = item?.content
 
         // Do any additional setup after loading the view.
     }
