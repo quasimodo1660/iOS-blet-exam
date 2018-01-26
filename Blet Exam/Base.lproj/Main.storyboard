@@ -78,7 +78,7 @@
                                             <state key="normal" title="edit"/>
                                             <connections>
                                                 <action selector="editButtonPressed:" destination="jHU-tr-b4f" eventType="touchUpInside" id="8pI-vC-tZp"/>
-                                                <segue destination="dZ9-Eu-fGY" kind="presentation" identifier="edit" id="nh7-6p-EFi"/>
+                                                <segue destination="dZ9-Eu-fGY" kind="show" identifier="edit" id="nh7-6p-EFi"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -95,6 +95,7 @@
                                 <connections>
                                     <outlet property="displayTime" destination="Tbg-pf-8G9" id="qrj-Qa-1HZ"/>
                                     <outlet property="displayTitle" destination="UBO-oy-MRD" id="5Jo-On-hKW"/>
+                                    <outlet property="editButton" destination="PdF-4r-P2L" id="wP5-Fy-N1K"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -125,25 +126,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rly-jN-IS3">
-                                <rect key="frame" x="24" y="40" width="327" height="30"/>
+                                <rect key="frame" x="24" y="84" width="327" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XCj-t8-kvJ">
-                                <rect key="frame" x="24" y="87" width="327" height="194"/>
+                                <rect key="frame" x="24" y="131" width="327" height="181"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="bEb-xf-VJy">
-                                <rect key="frame" x="24" y="291" width="327" height="194"/>
+                                <rect key="frame" x="24" y="322" width="327" height="181"/>
                                 <date key="date" timeIntervalSinceReferenceDate="538679943.54325902">
                                     <!--2018-01-26 17:19:03 +0000-->
                                 </date>
                             </datePicker>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qVh-DL-xkn">
-                                <rect key="frame" x="231" y="515" width="120" height="42"/>
+                                <rect key="frame" x="231" y="533" width="120" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Save Event"/>
                                 <connections>
@@ -151,7 +152,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r01-9w-GUS">
-                                <rect key="frame" x="24" y="515" width="76" height="42"/>
+                                <rect key="frame" x="24" y="533" width="76" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>

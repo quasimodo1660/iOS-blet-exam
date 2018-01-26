@@ -54,6 +54,7 @@ class ShowTableViewController: UITableViewController, AddViewDelegate, cellDeleg
             let myTime = incom[indexPath.row].beginDate
             cell.displayTime.text = formatter.string(from: myTime!)
             cell.delegate = self
+            cell.editButton.tag = indexPath.row
             return cell
         }
         else{
@@ -113,13 +114,20 @@ class ShowTableViewController: UITableViewController, AddViewDelegate, cellDeleg
         else if segue.identifier == "edit"{
             let target = segue.destination as! AddItemViewController
             target.delegate = self
-            if let indexPath = (sender as? NSIndexPath){
-                target.item = incom[indexPath.row]
-                target.indexPath = indexPath
+            if let button = (sender as? UIButton){
+                target.item = incom[button.tag]
+                if let superview = button.superview {
+                    if let cell = superview.superview as? ICell {
+                        let indexPath = tableView.indexPath(for: cell)! as NSIndexPath
+                        target.indexPath=indexPath
+                        
+                    }
+                }
+                }
             }
         }
        
-    }
+    
     
     //********************  TableView Stuff   ********************************
 
@@ -157,8 +165,8 @@ class ShowTableViewController: UITableViewController, AddViewDelegate, cellDeleg
     //********************** Row selected stuff  ***********************************
     func editRow(_ sender: ICell) {
         print("here")
-        let indexPath = tableView.indexPath(for: sender)! as NSIndexPath
-        performSegue(withIdentifier: "edit", sender: indexPath)
+//        let indexPath = tableView.indexPath(for: sender)! as NSIndexPath
+//        performSegue(withIdentifier: "edit", sender: indexPath)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -186,7 +194,22 @@ class ShowTableViewController: UITableViewController, AddViewDelegate, cellDeleg
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        <#code#>
+        var item:Todolist?
+        if indexPath.section == 0{
+            item = incom[indexPath.row]
+        }
+        else{
+            item = com[indexPath.row]
+        }
+        manageDatabase.delete(item!)
+        do{
+            try manageDatabase.save()
+        }
+        catch{
+            print("\(error)")
+        }
+        fetchAllItems()
+        tableView.reloadData()
     }
     
     
@@ -205,6 +228,8 @@ class CCell:UITableViewCell{
 class ICell:UITableViewCell{
     @IBOutlet weak var displayTime: UILabel!
     @IBOutlet weak var displayTitle: UILabel!
+    @IBOutlet weak var editButton: UIButton!
+    
     weak var delegate:cellDelegate?
     
     @IBAction func editButtonPressed(_ sender: UIButton) {

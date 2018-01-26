@@ -23,6 +23,15 @@ class AddItemViewController: UIViewController {
         super.viewDidLoad()
         titleLabel.text = item?.title
         contentLabel.text = item?.content
+        if item?.title != nil{
+            self.title = item?.title
+            timePick.date = (item?.beginDate)!
+        }
+        else{
+            self.title = "Event"
+        }
+        print(indexPath as Any)
+        
 
         // Do any additional setup after loading the view.
     }
